@@ -20,7 +20,24 @@ __NOTE__: Adding `logging.level.org.mybatis=TRACE` will also log the query resul
 
 ## Result:
 ```log
-2023-05-06T00:40:45.422+05:30 DEBUG 3174 --- [nio-8443-exec-2] o.m.e.m.EmployeeMapper.findEmployeeById  : ==>  Preparing: select * from employees where id = ?
-2023-05-06T00:40:45.492+05:30 DEBUG 3174 --- [nio-8443-exec-2] o.m.e.m.EmployeeMapper.findEmployeeById  : ==> Parameters: 2(Integer)
-2023-05-06T00:40:45.608+05:30 DEBUG 3174 --- [nio-8443-exec-2] o.m.e.m.EmployeeMapper.findEmployeeById  : <==      Total: 1
+2023-05-06T01:28:30.472+05:30 DEBUG 4279 --- [nio-8443-exec-1] o.m.e.m.EmployeeMapper.findEmployeeById  : ==>  Preparing: select * from employees where id = ?
+2023-05-06T01:28:30.524+05:30 DEBUG 4279 --- [nio-8443-exec-1] o.m.e.m.EmployeeMapper.findEmployeeById  : ==> Parameters: 2(Integer)
+2023-05-06T01:28:30.616+05:30 DEBUG 4279 --- [nio-8443-exec-1] o.m.e.m.EmployeeMapper.findEmployeeById  : <==      Total: 1
+
+2023-05-06T01:34:22.838+05:30 DEBUG 4426 --- [nio-8443-exec-1] o.m.e.m.E.fetchEmployeeList              : ==>  Preparing: select * from employees
+2023-05-06T01:34:22.927+05:30 DEBUG 4426 --- [nio-8443-exec-1] o.m.e.m.E.fetchEmployeeList              : ==> Parameters: 
+2023-05-06T01:34:22.993+05:30 DEBUG 4426 --- [nio-8443-exec-1] o.m.e.m.E.fetchEmployeeList              : <==      Total: 4
+
+2023-05-06T01:28:35.664+05:30 DEBUG 4279 --- [nio-8443-exec-2] o.m.e.m.E.insertEmployeeDetails          : ==>  Preparing: insert into employees (id, name, yoe, tech) values (?, ?, ?, ?)
+2023-05-06T01:28:35.670+05:30 DEBUG 4279 --- [nio-8443-exec-2] o.m.e.m.E.insertEmployeeDetails          : ==> Parameters: 4(Integer), ddd(String), 2(Integer), java, hibernate(String)
+2023-05-06T01:28:35.974+05:30 DEBUG 4279 --- [nio-8443-exec-2] o.m.e.m.E.insertEmployeeDetails          : <==    Updates: 1
+```
+
+### When `logging.level.org.mybatis=TRACE` is used:
+```log
+2023-05-06T01:06:47.360+05:30 DEBUG 3852 --- [nio-8443-exec-1] o.m.e.m.EmployeeMapper.findEmployeeById  : ==>  Preparing: select * from employees where id = ?
+2023-05-06T01:06:47.428+05:30 DEBUG 3852 --- [nio-8443-exec-1] o.m.e.m.EmployeeMapper.findEmployeeById  : ==> Parameters: 1(Integer)
+2023-05-06T01:06:47.584+05:30 TRACE 3852 --- [nio-8443-exec-1] o.m.e.m.EmployeeMapper.findEmployeeById  : <==    Columns: id, name, yoe, tech
+2023-05-06T01:06:47.584+05:30 TRACE 3852 --- [nio-8443-exec-1] o.m.e.m.EmployeeMapper.findEmployeeById  : <==        Row: 1, aaa, 3, java, sql
+2023-05-06T01:06:47.605+05:30 DEBUG 3852 --- [nio-8443-exec-1] o.m.e.m.EmployeeMapper.findEmployeeById  : <==      Total: 1
 ```
